@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arkadaş İstekleri</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+    <main class="requests-container">
+        <h2>Arkadaşlık İstekleri</h2>
+        <% if (requests.length > 0) { %>
+            <div class="requests-grid">
+                <% requests.forEach(request => { %>
+                    <div class="request-card">
+                        <span class="request-username"><%= request.from.username %></span>
+                        <div class="request-buttons">
+                            <form method="POST" action="/friends/accept">
+                                <input type="hidden" name="requestId" value="<%= request._id %>">
+                                <button type="submit" class="accept-btn">Kabul Et</button>
+                            </form>
+                            <form method="POST" action="/friends/reject">
+                                <input type="hidden" name="requestId" value="<%= request._id %>">
+                                <button type="submit" class="reject-btn">Reddet</button>
+                            </form>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <p>Henüz arkadaşlık isteğiniz yok.</p>
+        <% } %>
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+</html>

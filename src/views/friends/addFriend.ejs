@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arkadaş Ekle</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+    <main class="add-friend-container">
+        <h2>Arkadaş Ekle</h2>
+        <form method="GET" action="/friends/add">
+            <input type="text" name="username" placeholder="Kullanıcı adı ara..." required>
+            <button type="submit">Ara</button>
+        </form>
+
+        <% if (showResults) { %>  <!-- Sadece arama yapıldığında sonuçları göster -->
+            <h3>Sonuçlar:</h3>
+            <ul class="user-list">
+                <% if (users.length > 0) { %>
+                    <% users.forEach(otherUser => { %>
+                        <li class="user-card">
+                            <span><%= otherUser.username %></span>
+                            <% if (user.friends.some(friend => friend._id.toString() === otherUser._id.toString())) { %>
+                                <span class="friend-info">(Zaten arkadaşsınız)</span>
+                            <% } else { %>
+                                <form method="POST" action="/friends/send-request">
+                                    <input type="hidden" name="friendId" value="<%= otherUser._id %>">
+                                    <button type="submit" class="send-request-btn">Arkadaşlık İsteği Gönder</button>
+                                </form>
+                            <% } %>
+                        </li>
+                    <% }) %>
+                <% } else { %>
+                    <p class="no-results">Aradığınız kullanıcı bulunamadı.</p>
+                <% } %>
+            </ul>
+        <% } %>
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,626 @@
+/* ===============================
+   Genel Ayarlar
+================================ */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+}
+
+/* Sayfa düzeni: Flex ile dikey merkezleme */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  /* İçeriği ve footer'ı düzenle */
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #62ff88;
+    margin-bottom: 15px;
+}
+
+
+a {
+    color: #62ff88;  /* Canlı yeşil link rengi */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* ===============================
+   Header ve Footer
+================================ */
+/* Header */
+header {
+    background-color: #262626;
+    padding: 15px;
+    text-align: center;
+    font-size: 20px;
+    color: #d4d4d4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    color: #62ff88;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-links li a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+/* Footer her zaman sayfanın en altına */
+footer {
+    background-color: #262626;
+    padding: 15px;
+    text-align: center;
+    color: #d4d4d4;
+    position: relative;
+    bottom: 0;
+}
+
+/* ===============================
+   Form Elemanları
+================================ */
+/* Form kapsayıcısı */
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;  /* Ortalanma */
+}
+
+form h2 {
+    color: #62ff88;
+    margin-bottom: 20px;
+}
+
+form label {
+    align-self: flex-start;
+    margin-bottom: 5px;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background-color: #3b3b3b;
+    color: white;
+}
+
+form input::placeholder {
+    color: #999;
+}
+
+form button {
+    width: 100%;
+    padding: 10px 0;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+form p {
+    margin-top: 10px;
+}
+
+form a {
+    color: #62ff88;
+    text-decoration: none;
+}
+
+form a:hover {
+    text-decoration: underline;
+}
+
+/* ===============================
+   Anasayfa Stili
+================================ */
+.home-container {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.home-container h1 {
+    font-size: 36px;
+    color: #62ff88;  /* Canlı yeşil */
+}
+
+.home-container a {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 20px;
+    border: 2px solid #62ff88;
+    border-radius: 4px;
+    color: #62ff88;
+    font-size: 18px;
+}
+
+.home-container a:hover {
+    background-color: #62ff88;
+    color: #1e1e1e;
+}
+
+/* ===============================
+   Sohbet Odası
+================================ */
+/* Mesaj Kutusu */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    padding: 20px;
+}
+
+h2 {
+    color: #62ff88;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.chatp {
+    color: #d4d4d4;
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Mesaj Kutusu */
+#messages {
+    height: 100%;
+    max-height: 500px; /* Mesaj kutusunun yüksekliğini sınırla */
+    overflow-y: auto; /* Dikey kaydırma çubuğunu aktif et */
+    padding: 10px;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#messages p {
+    max-width: 30%; /* Mesajın genişliği sınırlandırılır */
+    word-wrap: break-word; /* Uzun kelimeler satırı aşarsa yeni satıra geç */
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.self {
+    background-color: #4caf50; /* Gönderen kişinin mesajının arka plan rengi */
+    color: white;
+    align-self: flex-end;
+    margin-left: auto; /* Sağda hizala */
+}
+
+.other {
+    background-color: #444; /* Diğer kişilerin mesajının arka plan rengi */
+    color: white;
+    align-self: flex-start;
+    margin-right: auto; /* Solda hizala */
+}
+
+#message-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#message-input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+.clear-btn {
+    padding: 10px 20px;
+    background-color: #ff0000;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.clear-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Responsive (Mobil Uyumlu) */
+@media screen and (max-width: 768px) {
+    #messages {
+        height: 300px;
+        padding: 15px;
+    }
+
+    #message-form {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+/* ===============================
+   Hata Mesajları
+================================ */
+.error-message {
+    color: #ff4c4c;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* ===============================
+   Responsive Tasarım
+================================ */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .home-container h1 {
+        font-size: 28px;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+
+/* friend request */
+
+/* Arkadaş Ekleme Sayfası */
+.add-friend-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.add-friend-container form {
+    display: flex;
+    gap: 10px;
+}
+
+.add-friend-container ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.add-friend-container li {
+    background-color: #2c2c2c;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-friend-container li button {
+    background-color: #4caf50;
+    border: none;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-friend-container li button:hover {
+    background-color: #45a049;
+}
+
+.self-info {
+    font-style: italic;
+    color: #aaa;
+}
+/* end friends ekleme */
+
+/* Arkadaşlarım Sayfası */
+
+/* Arkadaş Listesi Ana Konteyner */
+.friends-list-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Arkadaş Kartı */
+/* Arkadaş Kartı */
+.friend-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: transparent; /* Arkaplanı tamamen kaldırdık */
+    border: 1px solid #444; /* Çerçeve ekleyebiliriz istersen */
+}
+
+/* Kullanıcı Adı */
+.friend-username {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* Buton Stili */
+.remove-friend-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.remove-friend-btn:hover {
+    background-color: #e60000;
+}
+
+.remove-friend-btn:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 77, 77, 0.8);
+}
+
+
+/* Boş Liste Mesajı */
+.friends-list-container p {
+    color: #bbb;
+    font-style: italic;
+}
+
+/* end arkadaşlarım */
+
+/* Arkadaşlık İstekleri Sayfası */
+
+/* Arkadaşlık İstekleri Konteyner */
+.requests-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* İstekler Grid Yapısı */
+.requests-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* İstek Kartı */
+.request-card {
+    background-color: #292929;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Kullanıcı Adı */
+.request-username {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* Butonlar Konteyner */
+.request-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* Kabul Butonu */
+.accept-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.accept-btn:hover {
+    background-color: #3d8b40;
+}
+
+/* Reddet Butonu */
+.reject-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reject-btn:hover {
+    background-color: #e60000;
+}
+
+.reject-btn:focus, .accept-btn:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(77, 255, 77, 0.8);
+}
+
+/* Boş Liste Mesajı */
+.requests-container p {
+    color: #bbb;
+    font-style: italic;
+}
+
+/* end arkadaşlık istekleri */
+
+/* arkadaş chat Sayfası */
+
+.friends-list .friend-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.message-btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.message-btn:hover {
+    background-color: #45a049;
+}
+.private-chat-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    padding: 20px;
+}
+
+
+#private-messages {
+    height: 100%;
+    max-height: 500px; /* Mesaj kutusunun yüksekliğini sınırla */
+    overflow-y: auto; /* Dikey kaydırma çubuğunu aktif et */
+    padding: 10px;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#private-messages p {
+    max-width: 30%; /* Mesajın genişliği sınırlandırılır */
+    word-wrap: break-word; /* Uzun kelimeler satırı aşarsa yeni satıra geç */
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.self {
+    background-color: #4caf50; /* Gönderen kişinin mesajının arka plan rengi */
+    color: white;
+    align-self: flex-end;
+    margin-left: auto; /* Sağda hizala */
+}
+
+.other {
+    background-color: #444; /* Diğer kişilerin mesajının arka plan rengi */
+    color: white;
+    align-self: flex-start;
+    margin-right: auto; /* Solda hizala */
+}
+
+#private-message-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#private-message-form {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+/* end arkadaş chat */

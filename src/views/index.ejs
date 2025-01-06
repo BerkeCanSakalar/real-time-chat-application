@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anasayfa</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <main>
+        <h1>Hoş Geldiniz!</h1>
+        <% if (user) { %>
+            <p>Merhaba, <%= user.username %>! Sohbet odasına gitmek için aşağıdaki linke tıklayın:</p>
+            <a href="/chat">Sohbet Odasına Git</a>
+        <% } else { %>
+            <p>Giriş yaparak sohbet odasına katılabilirsiniz!</p>
+            <a href="/auth/login">Giriş Yap</a>
+            <a href="/auth/register">Kayıt Ol</a>
+        <% } %>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

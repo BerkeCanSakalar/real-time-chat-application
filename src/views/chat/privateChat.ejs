@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= friendUsername %> ile Sohbet</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+    <main class="private-chat-container">
+        <h2><%= friendUsername %> ile Sohbet</h2>
+        <div id="private-messages" class="messages-container"></div>
+        <form id="private-message-form">
+            <input type="text" id="private-message-input" placeholder="Mesaj yaz..." autocomplete="off">
+            <button type="submit">Gönder</button>
+            <button type="button" id="clear-button" class="clear-btn">Temizle</button>
+        </form>
+    </main>
+    <%- include('../partials/footer') %>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        const roomId = "<%= roomId %>";
+        const username = "<%= username %>";
+
+        // Odaya katıl
+        socket.emit('joinPrivateRoom', { roomId, username });
+
+        // Mesaj gönderme işlemi
+        document.getElementById('private-message-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const message = document.getElementById('private-message-input').value;
+            socket.emit('sendPrivateMessage', { roomId, username, message });
+            document.getElementById('private-message-input').value = '';
+        });
+
+        // Mesaj alımı
+        socket.on('receivePrivateMessage', (data) => {
+            console.log('Mesaj alındı:', data);
+            const msgElement = document.createElement('p');
+            msgElement.classList.add(data.username === username ? 'self' : 'other');
+            msgElement.textContent = `${data.username}: ${data.message}`;
+            document.getElementById('private-messages').appendChild(msgElement);
+            document.getElementById('private-messages').scrollTop = document.getElementById('private-messages').scrollHeight;
+        });
+
+        document.getElementById('clear-button').addEventListener('click', () => {
+            socket.emit('clearMessages', roomId);
+        });
+        
+        socket.on('clearMessagesClient', () => {
+            document.getElementById('private-messages').innerHTML = '';
+        });
+        
+        // Sayfa yüklendiğinde eski mesajları al
+        socket.on('previousMessages', (messages) => {
+            const messagesContainer = document.getElementById('private-messages');
+            messages.forEach((msg) => {
+                const msgElement = document.createElement('p');
+                msgElement.classList.add(msg.username === username ? 'self' : 'other');
+                msgElement.textContent = `${msg.username}: ${msg.message}`;
+                messagesContainer.appendChild(msgElement);
+            });
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        });
+    </script>
+</body>
+</html>

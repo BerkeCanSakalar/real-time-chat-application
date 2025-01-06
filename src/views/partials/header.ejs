@@ -1,0 +1,20 @@
+<header>
+    <nav>
+        <div class="logo">
+            <a href="/">Gerçek Zamanlı Chat Uygulaması</a>
+        </div>
+        <ul class="nav-links">
+            <% if (user) { %>
+                <li>Merhaba, <strong><%= user.username %></strong></li>
+                <li><a href="/chat">Sohbet Odası</a></li>
+                <li><a href="/friends/add">Arkadaş Ekle</a></li>
+                <li><a href="/friends/requests">Arkadaşlık İstekleri</a></li>
+                <li><a href="/friends/list">Arkadaşlarım</a></li>
+                <li><a href="/auth/logout">Çıkış Yap</a></li>
+            <% } else { %>
+                <li><a href="/auth/register">Kayıt Ol</a></li>
+                <li><a href="/auth/login">Giriş Yap</a></li>
+            <% } %>
+        </ul>
+    </nav>
+</header>

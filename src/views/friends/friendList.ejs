@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arkadaş Listesi</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+    <main class="friends-list-container">
+        <h2>Arkadaşlarım</h2>
+        <% if (friends.length > 0) { %>
+            <div class="friends-grid">
+                <% friends.forEach(friend => { %>
+                    <div class="friend-card">
+                        <span class="friend-username"><%= friend.username %></span>
+                        <form method="POST" action="/friends/remove">
+                            <input type="hidden" name="friendId" value="<%= friend._id %>">
+                            <button type="submit" class="remove-friend-btn">Arkadaşlıktan Çıkar</button>
+                        </form>
+                        <a href="/chat/private/<%= friend._id %>" class="message-btn">Mesaj</a>
+                    </div>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <p>Henüz arkadaşınız yok.</p>
+        <% } %>
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+</html>
