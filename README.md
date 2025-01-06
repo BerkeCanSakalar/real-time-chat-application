@@ -29,13 +29,19 @@ Gerekli Paketlerin Yüklenmesi Tüm bağımlılıkları yüklemek için:
 
 .env Dosyası Oluşturun Proje kök dizininde bir .env dosyası oluşturun ve aşağıdaki örneği kullanarak gerekli bilgileri doldurun:
 
-MONGO_URI="Your Mongodb Connection Link" PORT="3000" SESSION_SECRET="Your Secret Key" JWT_SECRET="Your JWT Secret Key"
+MONGO_URI="Your Mongodb Connection Link" 
+PORT="3000" 
+SESSION_SECRET="Your Secret Key" 
+JWT_SECRET="Your JWT Secret Key"
 
-çalıştımak için bu komutu terminale yapıştıırn "npm install --save-dev nodemon"
+çalıştımak için bu komutu terminale yapıştıırn 
+"npm install --save-dev nodemon"
 
-Çalıştırma Projenizi aşağıdaki komutla başlatabilirsiniz: "npm run dev"
+Çalıştırma Projenizi aşağıdaki komutla başlatabilirsiniz: 
+"npm run dev"
 
-başlatırken eğer hata alırsanız package.json dosyasında bu kodlar var mı kontrol edin. "scripts": { "start": "node app.js", "dev": "nodemon app.js" },
+başlatırken eğer hata alırsanız package.json dosyasında bu kodlar var mı kontrol edin. 
+"scripts": { "start": "node app.js", "dev": "nodemon app.js" },
 
 
 📌 Lisans
